@@ -3809,29 +3809,42 @@ input, select, textarea {
 		border-bottom: 0;
 	}
 
-	/* The grid: Four equal columns that floats next to each other */
+	/* Image gallery*/
+	.row {
+		display: flex;
+		flex: 3;
+	}
+
 	.column {
-		float: left;
-		width: 25%;
+		flex-basis: 33%;
 		padding: 10px 5px 10px;
+		align-items: center;
+		display: flex;
+		justify-content: center;
+	}
+
+	@media screen and (min-width: 980px) {
+		.column {
+			flex-basis: 25%;
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		.column {
+			flex-basis: 50%;
+		}
 	}
 
 	/* Style the images inside the grid */
 	.column img {
 		opacity: 0.8;
 		cursor: pointer;
-		width: 100%;
+		max-width: 100%;
+		max-height: 200px;
 	}
 
 	.column img:hover {
 		opacity: 1;
-	}
-
-	/* Clear floats after the columns */
-	.row:after {
-		content: "";
-		display: table;
-		clear: both;
 	}
 
 	/* The expanding image container (positioning is needed to position the close button and the text) */
@@ -3849,12 +3862,26 @@ input, select, textarea {
 		font-size: 20px;
 	}
 
+	#expandedImg {
+		max-width: 100%;
+		max-height: 500px;
+	}
+
 	/* Closable button inside the image */
 	.closebtn {
 		position: absolute;
-		top: 10px;
-		right: 15px;
+		top: 5px;
+		left: 50%;
+		height: 27px;
+		width: 27px;
+		line-height: 0.75;
+		transform:translateX(-50%);
 		color: white;
 		font-size: 35px;
 		cursor: pointer;
 	}
+
+  .closebtn:hover {
+	background-color: rgba(34, 33, 33, 0.65);
+	  border-radius: 25px;
+}
